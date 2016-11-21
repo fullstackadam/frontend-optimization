@@ -1,0 +1,26 @@
+{
+  "name": "frontend-nanodegree-mobile-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstackadam/frontend-optimization.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fullstackadam/frontend-optimization/issues"
+  },
+  "homepage": "https://github.com/fullstackadam/frontend-optimization#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-beautify": "^2.0.1",
+    "gulp-cssbeautify": "^0.1.3",
+    "gulp-jshint": "^2.0.4",
+    "gulp-prettify": "^0.5.0"
+  }
+}
