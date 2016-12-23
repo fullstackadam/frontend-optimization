@@ -1,12 +1,13 @@
 var gulp = require('gulp'),
 	/*htmlBeautify = require('gulp-prettify'),
 	cssBeautify = require('gulp-cssbeautify'),
-	jsBeautify = require('gulp-beautify'),
-	jshint = require('gulp-jshint');*/
+	jshint = require('gulp-jshint'),*/
   //minify
   htmlMinify = require('gulp-htmlmin'),
-  cssMinify = require('gulp-clean-css');
-  jsMinify = require('gulp-jsmin');
+  cssMinify = require('gulp-clean-css'),
+  jsMinify = require('gulp-jsmin'),
+  imageOptimize = require('gulp-imagemin');
+  //imageResize = require('gulp-image-resize');
 
 gulp.task('htmlMinify', function() {
   gulp.src('src/*.html')
@@ -35,6 +36,38 @@ gulp.task('jsMinify', function() {
     .pipe(gulp.dest('dist/views/js'));
 });
 
+/*gulp.task('imageResize', function () {
+  gulp.src('src/img/*')
+    .pipe(imageResize({
+      width : 100,
+      height : 100,
+      quality : 7,
+      upscale : false
+    }))
+    .pipe(gulp.dest('dist/img'));
+
+  gulp.src('src/views/images/*')
+    .pipe(imageResize({
+      width : 100,
+      height : 100,
+      quality : 7,
+      upscale : false
+    }))
+    .pipe(gulp.dest('dist/views/images'));
+});*/
+
+gulp.task('imageOptimize', function() {
+  gulp.src('src/img/*')
+    .pipe(imageOptimize({ progressive: true }))
+    .pipe(gulp.dest('dist/img'));
+
+  gulp.src('src/views/images/*')
+    .pipe(imageOptimize({ progressive: true }))
+    .pipe(gulp.dest('dist/views/images'));
+});
+
+//beautify tasks for src
+
 gulp.task('htmlBeautify', function(){
   gulp.src('src/*.html')
     .pipe(htmlBeautify({indent_size: 4}))
@@ -47,12 +80,6 @@ gulp.task('cssBeautify', function(){
     .pipe(gulp.dest('src/css'));
 });
 
-gulp.task('jsBeautify', function(){
-  gulp.src('src/js/*.js')
-    .pipe(jsBeautify({indentSize: 4}))
-    .pipe(gulp.dest('src/js'));
-});
-
 gulp.task('lint', function(){
   gulp.src('src/js/*.js')
     .pipe(jshint({ linter: require('jshint-jsx').JSXHINT }))
@@ -62,4 +89,6 @@ gulp.task('lint', function(){
 gulp.src('src/images/*')
     .pipe(gulp.dest('dist/images'));
 
-gulp.task('default', ['htmlMinify', 'cssMinify', 'jsMinify']);
+gulp.task('default', ['htmlMinify', 'cssMinify', 'jsMinify', 'imageOptimize']);
+
+gulp.task('clean', ['htmlBeautify', 'cssBeautify'])
