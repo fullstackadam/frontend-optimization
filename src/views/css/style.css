@@ -31,6 +31,7 @@ form {
 
 .mover {
   position: fixed;
+  height: 100px;
   width: 256px;
   z-index: -1;
 }
@@ -46,6 +47,10 @@ form {
   content: "";
   display: table;
   clear:both;
+}
+
+.randomPizzaContainer:first-child {
+  
 }
 
 .container {
