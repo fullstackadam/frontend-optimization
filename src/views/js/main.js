@@ -374,15 +374,14 @@ var pizzaElementGenerator = function(i) {
 
   pizzaContainer.classList.add("randomPizzaContainer");
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
-  pizzaImageContainer.style.width="35%";
+  pizzaImageContainer.classList.add("pizzaImageContainer");
 
   pizzaImage.src = "images/pizza.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
-
-  pizzaDescriptionContainer.style.width="65%";
+  pizzaDescriptionContainer.classList.add("pizzaDescriptionContainer");
 
   pizzaName = document.createElement("h4");
   pizzaName.innerHTML = randomName();
@@ -500,8 +499,10 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  var scrollTop = document.body.scrollTop;
+
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -526,8 +527,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);

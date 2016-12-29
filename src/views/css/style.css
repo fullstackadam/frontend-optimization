@@ -62,6 +62,15 @@ form {
   height: 325px;
 }
 
-#pizza1 div {
-  
+.pizzaDescriptionContainer {
+  width: 65%;
+}
+
+.pizzaImageContainer {
+  width: 35%;
+}
+
+.mover {
+  height: 100px;
+  width: 73.333px;
 }
