@@ -375,7 +375,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.classList.add("randomPizzaContainer");
   
   // gives each pizza element a unique id
-  pizzaContainer.id = "pizza" + i;               
+  // pizzaContainer.classList.add("pizza" + i);               
   
   pizzaImageContainer.classList.add("pizzaImageContainer");
 
@@ -503,11 +503,10 @@ function updatePositions() {
   frame++;
 
   // window.performance.mark("mark_start_frame");
-
   var items = document.querySelectorAll('.mover');
   var top = document.body.scrollTop / 1250;
   var basicLeft = 0;
-  
+
   for (var i = 0; i < items.length; i++) {
     var phase = Math.sin(top + (i % 5));
 
